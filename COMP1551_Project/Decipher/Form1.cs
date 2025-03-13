@@ -110,8 +110,7 @@ namespace Decipher
                 // Loop through each character in the output string and convert it to an integer
                 for (int i = 0; i < OutputString.Length; i++)
                 {
-                    System.Diagnostics.Debug.WriteLine(OutputString[i]);
-                    ConvertedOutputCode[i] = (int)OutputString[i];
+                   ConvertedOutputCode[i] = (int)OutputString[i];
                 }
                 return ConvertedOutputCode;
             }
