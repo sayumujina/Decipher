@@ -1,6 +1,7 @@
 
 using System.Windows.Forms.VisualStyles;
-
+using System;
+using System.Linq;
 namespace Decipher
 {
     public partial class Form1 : Form
@@ -24,9 +25,13 @@ namespace Decipher
             set => shiftingValue = value;
         }
 
+        //Set a flag to check if the input is valid
+        public static bool IsInputValid = true;
+
         // String processing class
         class StringProcessing
         {
+            
             // Check if the string is not empty, contains 40 characters or less and only has capital letters
             // Check if the number is between -25 and 25 or not
             public static void CheckInput(string InputString, int ShiftingValue)
@@ -50,11 +55,12 @@ namespace Decipher
                     if (InputString.All(char.IsUpper) == false)
                     {
                         MessageBox.Show("The input string must contain only capital letters. " + ErrorMessage);
-                    }
+                    } 
                     if (Enumerable.Range(-25, 51).Contains(ShiftingValue) == false)
                     {
                         MessageBox.Show("The shifting value must be between -25 and 25. " + ErrorMessage);
                     }
+                    IsInputValid = false;
                 }
             }
 
@@ -63,9 +69,6 @@ namespace Decipher
             {
                 // Empty the output string first (in case the function is called multiple times)
                 string OutputString = "";
-                // Initialize the converted input string array
-                int[] ConvertedInputString = {};
-                int ConvertIndex = 0;
                 // Loop through each value in the input string
                 foreach (char c in InputString)
                 {
@@ -76,7 +79,7 @@ namespace Decipher
                     // If the value exceeds the range of capital letters (65 - 90), loop back to the beginning
                     if (OutputAsciiValue < 65)
                     {
-                       OutputAsciiValue += 26; 
+                        OutputAsciiValue += 26;
                     }
                     else if (OutputAsciiValue > 90)
                     {
@@ -84,23 +87,55 @@ namespace Decipher
                     }
                     // Convert the output ASCII value back to a character value and add it to the output string
                     char OutputChar = (char)OutputAsciiValue;
-                    ConvertedInputString[ConvertIndex] = OutputAsciiValue;
-                    ConvertIndex++;
-                    //ConvertedInputString[ConvertIndex] = OutputAsciiValue;
                     OutputString += OutputChar;
                 }
                 // Set the label text to output string
                 return OutputString;
             }
+            // Return an array containing the integer of each character of the input string
+            public static int[] InputCode(string InputString)
+            {
+                int[] ConvertedInputCode = new int[InputString.Length];
+                // Loop through each character in the input string and convert it to an integer
+                for (int i = 0; i < InputString.Length; i++)
+                {
+                    ConvertedInputCode[i] = (int)InputString[i];
+                }
+                return ConvertedInputCode;
+            }
+            // Return an array containing the integer of each character of the output string
+            public static int[] OutputCode(string OutputString)
+            {
+                int[] ConvertedOutputCode = new int[OutputString.Length];
+                // Loop through each character in the output string and convert it to an integer
+                for (int i = 0; i < OutputString.Length; i++)
+                {
+                    System.Diagnostics.Debug.WriteLine(OutputString[i]);
+                    ConvertedOutputCode[i] = (int)OutputString[i];
+                }
+                return ConvertedOutputCode;
+            }
+            // Sort the input string in alphabetical order
+            public static string SortString(string InputString)
+            {
+                // Convert the input string to a character array
+                char[] InputArray = InputString.ToCharArray();
+                // Sort the character array
+                Array.Sort(InputArray);
+                // Convert the sorted character array back to a string
+                string SortedString = new string(InputArray);
+                return SortedString;
+            }
+
         }
-
-
         private void Form1_Load(object sender, EventArgs e)
         {
             // Starts listen to the SubmitButton button being clicked
             SubmitButton.Click += (sender, e) => SubmitButton_Click(sender, e);
             OutputLabel.Text = "";
-            InputLabel.Text = "";
+            InputAsciiLabel.Text = "";
+            OutputAsciiLabel.Text = "";
+            SortedStringLabel.Text = "";
         }
 
         private void SubmitButton_Click(object? sender, EventArgs e)
@@ -110,25 +145,52 @@ namespace Decipher
             {
                 InputString = StringContainer.Text;
                 ShiftingValue = Convert.ToInt32(IntegerContainer.Text);
-                System.Diagnostics.Debug.WriteLine(Convert.ToChar(90));
             }
             else
             {
                 if (string.IsNullOrEmpty(IntegerContainer.Text))
                 {
                     MessageBox.Show("Please enter a text");
+                    
                 }
                 if (string.IsNullOrEmpty(StringContainer.Text))
                 {
                     MessageBox.Show("Please enter a number");
+                    
                 }
-                // Stops the program if at least one field is empty
-                return;
+                IsInputValid = false;
             }
+            
+            // Initialize the labels text
+            InputAsciiLabel.Text = "The ASCII values of the input string is: ";
+            OutputLabel.Text = "The output string is: ";
+            OutputAsciiLabel.Text = "The ASCII values of the output string is: ";
+            SortedStringLabel.Text = "The sorted input string is: ";
+
             // Call the checkString function
             StringProcessing.CheckInput(InputString, ShiftingValue);
+
+            // If the input is invalid, return to avoid further processing
+            // Reset the flag
+            if (IsInputValid == false)
+            {
+                IsInputValid = true;
+                return;
+            }
+
             // Call the encode function and set the output label to the output string
-            OutputLabel.Text = StringProcessing.Encode(InputString, ShiftingValue);
+            OutputLabel.Text += StringProcessing.Encode(InputString, ShiftingValue);
+            foreach (int i in StringProcessing.InputCode(InputString))
+            {
+                InputAsciiLabel.Text += i.ToString() + " ";
+            }
+            foreach (int i in StringProcessing.OutputCode(StringProcessing.Encode(InputString, ShiftingValue)))
+            {
+                OutputAsciiLabel.Text += i.ToString() + " ";
+            }
+
+            // Call the sortString function 
+            SortedStringLabel.Text += StringProcessing.SortString(InputString);
         }
     }
 }

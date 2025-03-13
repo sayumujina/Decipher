@@ -34,7 +34,9 @@
             IntegerLabel = new Label();
             SubmitButton = new Button();
             OutputLabel = new Label();
-            InputLabel = new Label();
+            InputAsciiLabel = new Label();
+            OutputAsciiLabel = new Label();
+            SortedStringLabel = new Label();
             SuspendLayout();
             // 
             // StringContainer
@@ -81,29 +83,51 @@
             // OutputLabel
             // 
             OutputLabel.Anchor = AnchorStyles.None;
-            OutputLabel.AutoSize = true;
-            OutputLabel.Location = new Point(384, 136);
+            OutputLabel.Location = new Point(71, 136);
             OutputLabel.Name = "OutputLabel";
-            OutputLabel.Size = new Size(94, 20);
+            OutputLabel.Size = new Size(717, 20);
             OutputLabel.TabIndex = 5;
             OutputLabel.Text = "Output Code";
+            OutputLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // InputLabel
+            // InputAsciiLabel
             // 
-            InputLabel.Anchor = AnchorStyles.None;
-            InputLabel.AutoSize = true;
-            InputLabel.Location = new Point(384, 112);
-            InputLabel.Name = "InputLabel";
-            InputLabel.Size = new Size(82, 20);
-            InputLabel.TabIndex = 6;
-            InputLabel.Text = "Input Code";
+            InputAsciiLabel.Anchor = AnchorStyles.None;
+            InputAsciiLabel.Location = new Point(57, 112);
+            InputAsciiLabel.Name = "InputAsciiLabel";
+            InputAsciiLabel.Size = new Size(738, 20);
+            InputAsciiLabel.TabIndex = 6;
+            InputAsciiLabel.Text = "Input Code";
+            InputAsciiLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // OutputAsciiLabel
+            // 
+            OutputAsciiLabel.Anchor = AnchorStyles.None;
+            OutputAsciiLabel.Location = new Point(71, 160);
+            OutputAsciiLabel.Name = "OutputAsciiLabel";
+            OutputAsciiLabel.Size = new Size(717, 20);
+            OutputAsciiLabel.TabIndex = 7;
+            OutputAsciiLabel.Text = "Output Code";
+            OutputAsciiLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // SortedStringLabel
+            // 
+            SortedStringLabel.Anchor = AnchorStyles.None;
+            SortedStringLabel.Location = new Point(70, 184);
+            SortedStringLabel.Name = "SortedStringLabel";
+            SortedStringLabel.Size = new Size(717, 20);
+            SortedStringLabel.TabIndex = 8;
+            SortedStringLabel.Text = "Sorted String";
+            SortedStringLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(InputLabel);
+            Controls.Add(SortedStringLabel);
+            Controls.Add(OutputAsciiLabel);
+            Controls.Add(InputAsciiLabel);
             Controls.Add(OutputLabel);
             Controls.Add(SubmitButton);
             Controls.Add(IntegerLabel);
@@ -125,6 +149,8 @@
         private Label IntegerLabel;
         private Button SubmitButton;
         private Label OutputLabel;
-        private Label InputLabel;
+        private Label InputAsciiLabel;
+        private Label OutputAsciiLabel;
+        private Label SortedStringLabel;
     }
 }
