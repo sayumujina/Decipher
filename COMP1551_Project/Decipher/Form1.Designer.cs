@@ -1,6 +1,6 @@
 ﻿namespace Decipher
 {
-    partial class Form1
+    partial class DecipherForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -37,26 +37,31 @@
             InputAsciiLabel = new Label();
             OutputAsciiLabel = new Label();
             SortedStringLabel = new Label();
+            SubmitLabel = new Label();
+            StringErrorLabel = new Label();
+            IntegerErrorLabel = new Label();
             SuspendLayout();
             // 
             // StringContainer
             // 
-            StringContainer.Location = new Point(368, 12);
+            StringContainer.Location = new Point(515, 6);
             StringContainer.Name = "StringContainer";
-            StringContainer.Size = new Size(125, 27);
+            StringContainer.PlaceholderText = "Capital letters only, maximum 40 letters...";
+            StringContainer.Size = new Size(435, 27);
             StringContainer.TabIndex = 0;
             // 
             // IntegerContainer
             // 
-            IntegerContainer.Location = new Point(368, 45);
+            IntegerContainer.Location = new Point(515, 45);
             IntegerContainer.Name = "IntegerContainer";
-            IntegerContainer.Size = new Size(125, 27);
+            IntegerContainer.PlaceholderText = "Integer range [-25, 25]";
+            IntegerContainer.Size = new Size(435, 27);
             IntegerContainer.TabIndex = 1;
             // 
             // StringLabel
             // 
             StringLabel.AutoSize = true;
-            StringLabel.Location = new Point(248, 15);
+            StringLabel.Location = new Point(395, 9);
             StringLabel.Name = "StringLabel";
             StringLabel.Size = new Size(114, 20);
             StringLabel.TabIndex = 2;
@@ -65,7 +70,7 @@
             // IntegerLabel
             // 
             IntegerLabel.AutoSize = true;
-            IntegerLabel.Location = new Point(234, 48);
+            IntegerLabel.Location = new Point(381, 48);
             IntegerLabel.Name = "IntegerLabel";
             IntegerLabel.Size = new Size(128, 20);
             IntegerLabel.TabIndex = 3;
@@ -73,7 +78,7 @@
             // 
             // SubmitButton
             // 
-            SubmitButton.Location = new Point(385, 78);
+            SubmitButton.Location = new Point(685, 78);
             SubmitButton.Name = "SubmitButton";
             SubmitButton.Size = new Size(94, 29);
             SubmitButton.TabIndex = 4;
@@ -83,7 +88,7 @@
             // OutputLabel
             // 
             OutputLabel.Anchor = AnchorStyles.None;
-            OutputLabel.Location = new Point(71, 136);
+            OutputLabel.Location = new Point(371, 136);
             OutputLabel.Name = "OutputLabel";
             OutputLabel.Size = new Size(717, 20);
             OutputLabel.TabIndex = 5;
@@ -93,7 +98,7 @@
             // InputAsciiLabel
             // 
             InputAsciiLabel.Anchor = AnchorStyles.None;
-            InputAsciiLabel.Location = new Point(57, 112);
+            InputAsciiLabel.Location = new Point(357, 112);
             InputAsciiLabel.Name = "InputAsciiLabel";
             InputAsciiLabel.Size = new Size(738, 20);
             InputAsciiLabel.TabIndex = 6;
@@ -103,7 +108,7 @@
             // OutputAsciiLabel
             // 
             OutputAsciiLabel.Anchor = AnchorStyles.None;
-            OutputAsciiLabel.Location = new Point(71, 160);
+            OutputAsciiLabel.Location = new Point(371, 160);
             OutputAsciiLabel.Name = "OutputAsciiLabel";
             OutputAsciiLabel.Size = new Size(717, 20);
             OutputAsciiLabel.TabIndex = 7;
@@ -113,18 +118,54 @@
             // SortedStringLabel
             // 
             SortedStringLabel.Anchor = AnchorStyles.None;
-            SortedStringLabel.Location = new Point(70, 184);
+            SortedStringLabel.Location = new Point(370, 184);
             SortedStringLabel.Name = "SortedStringLabel";
             SortedStringLabel.Size = new Size(717, 20);
             SortedStringLabel.TabIndex = 8;
             SortedStringLabel.Text = "Sorted String";
             SortedStringLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // Form1
+            // SubmitLabel
+            // 
+            SubmitLabel.Anchor = AnchorStyles.None;
+            SubmitLabel.ImageAlign = ContentAlignment.MiddleLeft;
+            SubmitLabel.Location = new Point(785, 82);
+            SubmitLabel.Name = "SubmitLabel";
+            SubmitLabel.Size = new Size(465, 20);
+            SubmitLabel.TabIndex = 9;
+            SubmitLabel.Text = "Success or Not?";
+            SubmitLabel.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // StringErrorLabel
+            // 
+            StringErrorLabel.Anchor = AnchorStyles.None;
+            StringErrorLabel.ImageAlign = ContentAlignment.MiddleLeft;
+            StringErrorLabel.Location = new Point(956, 9);
+            StringErrorLabel.Name = "StringErrorLabel";
+            StringErrorLabel.Size = new Size(433, 20);
+            StringErrorLabel.TabIndex = 10;
+            StringErrorLabel.Text = "Error message?";
+            StringErrorLabel.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // IntegerErrorLabel
+            // 
+            IntegerErrorLabel.Anchor = AnchorStyles.None;
+            IntegerErrorLabel.ImageAlign = ContentAlignment.MiddleLeft;
+            IntegerErrorLabel.Location = new Point(956, 48);
+            IntegerErrorLabel.Name = "IntegerErrorLabel";
+            IntegerErrorLabel.Size = new Size(433, 20);
+            IntegerErrorLabel.TabIndex = 11;
+            IntegerErrorLabel.Text = "Error message?";
+            IntegerErrorLabel.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // DecipherForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1401, 450);
+            Controls.Add(IntegerErrorLabel);
+            Controls.Add(StringErrorLabel);
+            Controls.Add(SubmitLabel);
             Controls.Add(SortedStringLabel);
             Controls.Add(OutputAsciiLabel);
             Controls.Add(InputAsciiLabel);
@@ -134,8 +175,8 @@
             Controls.Add(StringLabel);
             Controls.Add(IntegerContainer);
             Controls.Add(StringContainer);
-            Name = "Form1";
-            Text = "Form1";
+            Name = "DecipherForm";
+            Text = "DecipherForm";
             Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
@@ -152,5 +193,8 @@
         private Label InputAsciiLabel;
         private Label OutputAsciiLabel;
         private Label SortedStringLabel;
+        private Label SubmitLabel;
+        private Label StringErrorLabel;
+        private Label IntegerErrorLabel;
     }
 }

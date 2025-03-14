@@ -1,12 +1,11 @@
 
 using System.Windows.Forms.VisualStyles;
 using System;
-using System.Linq;
 namespace Decipher
 {
-    public partial class Form1 : Form
+    public partial class DecipherForm : Form
     {
-        public Form1()
+        public DecipherForm()
         {
             InitializeComponent();
         }
@@ -31,37 +30,39 @@ namespace Decipher
         // String processing class
         class StringProcessing
         {
-            
+
             // Check if the string is not empty, contains 40 characters or less and only has capital letters
             // Check if the number is between -25 and 25 or not
-            public static void CheckInput(string InputString, int ShiftingValue)
+            public static (string, string) CheckInput(string InputString, int ShiftingValue)
             {
-                // Create a uniform error message
-                string ErrorMessage = "Please re-type your input.";
-
+                // Initialize the error messages
+                string StringErrorMessage = "";
+                string IntegerErrorMessage = "";
+                
                 if (InputString.Length <= 40
                     && InputString.All(char.IsUpper) == true
                     // Counts 51 numbers from -25, which is the range from -25 to 25
                     && Enumerable.Range(-25, 51).Contains(ShiftingValue))
                 {
-                    MessageBox.Show("The input is valid.");
+                    return (StringErrorMessage, IntegerErrorMessage);
                 }
                 else
                 {
                     if (InputString.Length > 40)
                     {
-                        MessageBox.Show("The input string cannot be longer than 40 characters. " + ErrorMessage);
+                        StringErrorMessage = "The input string must contain 40 characters or less.";
                     }
                     if (InputString.All(char.IsUpper) == false)
                     {
-                        MessageBox.Show("The input string must contain only capital letters. " + ErrorMessage);
-                    } 
+                        StringErrorMessage = "The input string must contain only capital letters.";
+                    }
                     if (Enumerable.Range(-25, 51).Contains(ShiftingValue) == false)
                     {
-                        MessageBox.Show("The shifting value must be between -25 and 25. " + ErrorMessage);
+                        IntegerErrorMessage = "The shifting value must be between -25 and 25.";
                     }
                     IsInputValid = false;
                 }
+                return (StringErrorMessage, IntegerErrorMessage);
             }
 
             // Encode the input string
@@ -79,7 +80,7 @@ namespace Decipher
                     // If the value exceeds the range of capital letters (65 - 90), loop back to the beginning
                     if (OutputAsciiValue < 65)
                     {
-                        OutputAsciiValue += 26;
+                        OutputAsciiValue += 26; // Alphabet has 26 letters
                     }
                     else if (OutputAsciiValue > 90)
                     {
@@ -116,7 +117,7 @@ namespace Decipher
                 // Loop through each character in the output string and convert it to an integer
                 for (int i = 0; i < OutputString.Length; i++)
                 {
-                   ConvertedOutputCode[i] = (int)OutputString[i];
+                    ConvertedOutputCode[i] = (int)OutputString[i];
                 }
                 return ConvertedOutputCode;
             }
@@ -136,11 +137,15 @@ namespace Decipher
         private void Form1_Load(object sender, EventArgs e)
         {
             // Starts listen to the SubmitButton button being clicked
+            // Initialize the labels text
             SubmitButton.Click += (sender, e) => SubmitButton_Click(sender, e);
             OutputLabel.Text = "";
             InputAsciiLabel.Text = "";
             OutputAsciiLabel.Text = "";
             SortedStringLabel.Text = "";
+            SubmitLabel.Text = "";
+            StringErrorLabel.Text = "";
+            IntegerErrorLabel.Text = "";
         }
 
         private void SubmitButton_Click(object? sender, EventArgs e)
@@ -155,17 +160,18 @@ namespace Decipher
             {
                 if (string.IsNullOrEmpty(IntegerContainer.Text))
                 {
-                    MessageBox.Show("Please enter a text");
-                    
+                    InputString = ""; // Prevent null reference exception
+                    StringErrorLabel.Text = "Please enter a string";
+
                 }
                 if (string.IsNullOrEmpty(StringContainer.Text))
                 {
-                    MessageBox.Show("Please enter a number");
-                    
+                    ShiftingValue = 0;
+                    IntegerErrorLabel.Text = "Please enter an integer";
                 }
                 IsInputValid = false;
             }
-            
+
             // Initialize the labels text
             InputAsciiLabel.Text = "The ASCII values of the input string is: ";
             OutputLabel.Text = "The output string is: ";
@@ -180,9 +186,27 @@ namespace Decipher
             if (IsInputValid == false)
             {
                 IsInputValid = true;
+                SubmitLabel.Text = "Cannot process the input. Please re-enter the input.";
+                // Display the error messages if it exists
+                if (StringProcessing.CheckInput(InputString, ShiftingValue).Item1 != "")
+                {
+                    StringErrorLabel.Text = StringProcessing.CheckInput(InputString, ShiftingValue).Item1;
+                }
+                if (StringProcessing.CheckInput(InputString, ShiftingValue).Item2 != "")
+                {
+                    IntegerErrorLabel.Text = StringProcessing.CheckInput(InputString, ShiftingValue).Item2;
+                }
+                SubmitLabel.ForeColor = System.Drawing.Color.Red;
                 return;
             }
-
+            else
+            {
+                SubmitLabel.Text = "The input is valid.";
+                SubmitLabel.ForeColor = System.Drawing.Color.Green;
+            }
+            // Reset the error messages
+            StringErrorLabel.Text = "";
+            IntegerErrorLabel.Text = "";
             // Call the encode function and set the output label to the output string
             OutputLabel.Text += StringProcessing.Print(InputString, ShiftingValue);
             foreach (int i in StringProcessing.InputCode(InputString))
