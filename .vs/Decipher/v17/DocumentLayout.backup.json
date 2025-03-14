@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ADMIN\\source\\repos\\COMP1551_Project\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{05416546-5598-49BD-A8EF-F006C772C305}|COMP1551_Project\\Decipher\\Decipher.csproj|c:\\users\\admin\\source\\repos\\comp1551_project\\comp1551_project\\decipher\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05416546-5598-49BD-A8EF-F006C772C305}|COMP1551_Project\\Decipher\\Decipher.csproj|solutionrelative:comp1551_project\\decipher\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05416546-5598-49BD-A8EF-F006C772C305}|COMP1551_Project\\Decipher\\Decipher.csproj|c:\\users\\admin\\source\\repos\\comp1551_project\\comp1551_project\\decipher\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05416546-5598-49BD-A8EF-F006C772C305}|COMP1551_Project\\Decipher\\Decipher.csproj|solutionrelative:comp1551_project\\decipher\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05416546-5598-49BD-A8EF-F006C772C305}|COMP1551_Project\\Decipher\\Decipher.csproj|C:\\Users\\ADMIN\\source\\repos\\COMP1551_Project\\comp1551_project\\decipher\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{05416546-5598-49BD-A8EF-F006C772C305}|COMP1551_Project\\Decipher\\Decipher.csproj|solutionrelative:comp1551_project\\decipher\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 288,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\COMP1551_Project\\COMP1551_Project\\Decipher\\Form1.cs",
+              "RelativeDocumentMoniker": "COMP1551_Project\\Decipher\\Form1.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\COMP1551_Project\\COMP1551_Project\\Decipher\\Form1.cs [Design]",
+              "RelativeToolTip": "COMP1551_Project\\Decipher\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T04:20:36.702Z",
+              "IsPinned": true,
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\COMP1551_Project\\COMP1551_Project\\Decipher\\Form1.cs",
+              "RelativeDocumentMoniker": "COMP1551_Project\\Decipher\\Form1.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\COMP1551_Project\\COMP1551_Project\\Decipher\\Form1.cs",
+              "RelativeToolTip": "COMP1551_Project\\Decipher\\Form1.cs",
+              "ViewState": "AgIAAKYAAAAAAAAAAAAcwAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T06:59:50.691Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\COMP1551_Project\\COMP1551_Project\\Decipher\\Program.cs",
+              "RelativeDocumentMoniker": "COMP1551_Project\\Decipher\\Program.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\COMP1551_Project\\COMP1551_Project\\Decipher\\Program.cs",
+              "RelativeToolTip": "COMP1551_Project\\Decipher\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T07:55:07.481Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

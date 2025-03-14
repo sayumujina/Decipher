@@ -1,0 +1,17 @@
+C:\Users\ADMIN\source\repos\COMP1551_Project\COMP1551_Project\Decipher\bin\Debug\net8.0-windows\Decipher.exe
+C:\Users\ADMIN\source\repos\COMP1551_Project\COMP1551_Project\Decipher\bin\Debug\net8.0-windows\Decipher.deps.json
+C:\Users\ADMIN\source\repos\COMP1551_Project\COMP1551_Project\Decipher\bin\Debug\net8.0-windows\Decipher.runtimeconfig.json
+C:\Users\ADMIN\source\repos\COMP1551_Project\COMP1551_Project\Decipher\bin\Debug\net8.0-windows\Decipher.dll
+C:\Users\ADMIN\source\repos\COMP1551_Project\COMP1551_Project\Decipher\bin\Debug\net8.0-windows\Decipher.pdb
+C:\Users\ADMIN\source\repos\COMP1551_Project\COMP1551_Project\Decipher\obj\Debug\net8.0-windows\Decipher.Form1.resources
+C:\Users\ADMIN\source\repos\COMP1551_Project\COMP1551_Project\Decipher\obj\Debug\net8.0-windows\Decipher.csproj.GenerateResource.cache
+C:\Users\ADMIN\source\repos\COMP1551_Project\COMP1551_Project\Decipher\obj\Debug\net8.0-windows\Decipher.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\source\repos\COMP1551_Project\COMP1551_Project\Decipher\obj\Debug\net8.0-windows\Decipher.AssemblyInfoInputs.cache
+C:\Users\ADMIN\source\repos\COMP1551_Project\COMP1551_Project\Decipher\obj\Debug\net8.0-windows\Decipher.AssemblyInfo.cs
+C:\Users\ADMIN\source\repos\COMP1551_Project\COMP1551_Project\Decipher\obj\Debug\net8.0-windows\Decipher.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\source\repos\COMP1551_Project\COMP1551_Project\Decipher\obj\Debug\net8.0-windows\Decipher.sourcelink.json
+C:\Users\ADMIN\source\repos\COMP1551_Project\COMP1551_Project\Decipher\obj\Debug\net8.0-windows\Decipher.dll
+C:\Users\ADMIN\source\repos\COMP1551_Project\COMP1551_Project\Decipher\obj\Debug\net8.0-windows\refint\Decipher.dll
+C:\Users\ADMIN\source\repos\COMP1551_Project\COMP1551_Project\Decipher\obj\Debug\net8.0-windows\Decipher.pdb
+C:\Users\ADMIN\source\repos\COMP1551_Project\COMP1551_Project\Decipher\obj\Debug\net8.0-windows\Decipher.genruntimeconfig.cache
+C:\Users\ADMIN\source\repos\COMP1551_Project\COMP1551_Project\Decipher\obj\Debug\net8.0-windows\ref\Decipher.dll

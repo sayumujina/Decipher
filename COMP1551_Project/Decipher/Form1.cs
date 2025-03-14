@@ -65,7 +65,7 @@ namespace Decipher
             }
 
             // Encode the input string
-            public static string Encode(string InputString, int ShiftingValue)
+            private static string Encode(string InputString, int ShiftingValue)
             {
                 // Empty the output string first (in case the function is called multiple times)
                 string OutputString = "";
@@ -92,6 +92,12 @@ namespace Decipher
                 // Set the label text to output string
                 return OutputString;
             }
+
+            // Print the output string
+            public static string Print(string InputString, int ShiftingValue)
+            {
+                return Encode(InputString, ShiftingValue);
+            }
             // Return an array containing the integer of each character of the input string
             public static int[] InputCode(string InputString)
             {
@@ -115,7 +121,7 @@ namespace Decipher
                 return ConvertedOutputCode;
             }
             // Sort the input string in alphabetical order
-            public static string SortString(string InputString)
+            public static string Sort(string InputString)
             {
                 // Convert the input string to a character array
                 char[] InputArray = InputString.ToCharArray();
@@ -178,18 +184,18 @@ namespace Decipher
             }
 
             // Call the encode function and set the output label to the output string
-            OutputLabel.Text += StringProcessing.Encode(InputString, ShiftingValue);
+            OutputLabel.Text += StringProcessing.Print(InputString, ShiftingValue);
             foreach (int i in StringProcessing.InputCode(InputString))
             {
                 InputAsciiLabel.Text += i.ToString() + " ";
             }
-            foreach (int i in StringProcessing.OutputCode(StringProcessing.Encode(InputString, ShiftingValue)))
+            foreach (int i in StringProcessing.OutputCode(StringProcessing.Print(InputString, ShiftingValue)))
             {
                 OutputAsciiLabel.Text += i.ToString() + " ";
             }
 
             // Call the sortString function 
-            SortedStringLabel.Text += StringProcessing.SortString(InputString);
+            SortedStringLabel.Text += StringProcessing.Sort(InputString);
         }
     }
 }

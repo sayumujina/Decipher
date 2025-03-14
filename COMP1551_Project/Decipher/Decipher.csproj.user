@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current">
+    <ItemGroup>
+        <Compile Update="Form1.cs">
+            <SubType>Form</SubType>
+        </Compile>
+    </ItemGroup>
+</Project>
