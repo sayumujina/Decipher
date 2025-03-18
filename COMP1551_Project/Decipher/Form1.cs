@@ -1,13 +1,19 @@
 
 using System.Windows.Forms.VisualStyles;
 using System;
+using System.Xml;
 namespace Decipher
 {
     public partial class DecipherForm : Form
     {
         public DecipherForm()
         {
-            InitializeComponent();
+            InitializeComponent();        
+        }
+
+        private void DecipherForm_KeyDown(object? sender, KeyEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         // Initialize variables 
@@ -27,6 +33,8 @@ namespace Decipher
         //Set a flag to check if the input is valid
         public static bool IsInputValid = true;
 
+        //
+        public static string[] Output = new string[3];
         // String processing class
         class StringProcessing
         {
@@ -38,7 +46,7 @@ namespace Decipher
                 // Initialize the error messages
                 string StringErrorMessage = "";
                 string IntegerErrorMessage = "";
-                
+
                 if (InputString.Length <= 40
                     && InputString.All(char.IsUpper) == true
                     // Counts 51 numbers from -25, which is the range from -25 to 25
@@ -56,7 +64,7 @@ namespace Decipher
                     {
                         StringErrorMessage = "The input string must contain only capital letters.";
                     }
-                    if (Enumerable.Range(-25, 51).Contains(ShiftingValue) == false)
+                    if (Enumerable.Range(-25, 51).Contains(ShiftingValue) == false & ShiftingValue != 99999)
                     {
                         IntegerErrorMessage = "The shifting value must be between -25 and 25.";
                     }
@@ -138,23 +146,50 @@ namespace Decipher
         {
             // Starts listen to the SubmitButton button being clicked
             // Initialize the labels text
-            SubmitButton.Click += (sender, e) => SubmitButton_Click(sender, e);
-            OutputLabel.Text = "";
-            InputAsciiLabel.Text = "";
-            OutputAsciiLabel.Text = "";
-            SortedStringLabel.Text = "";
+            if (SubmitButton != null && StringContainer != null)
+            {
+                SubmitButton.Click += (sender, e) => SubmitButton_Click(sender, e);
+                this.KeyPreview = true; // Ensure the form captures key events
+                this.KeyDown += (sender, e) => IsEnterKeyDown(sender, e);
+            }
+            InputString = "";
+            ShiftingValue = 99999;           
             SubmitLabel.Text = "";
+            OutputTextBox.Text = "";
             StringErrorLabel.Text = "";
             IntegerErrorLabel.Text = "";
         }
 
-        private void SubmitButton_Click(object? sender, EventArgs e)
+        private void SubmitButton_Click(object sender, EventArgs e)
+        {
+            OutputTextBox.Text = "";
+            CheckAndDisplayInputs(sender, e);
+        }
+
+        private void IsEnterKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                OutputTextBox.Text = "";
+                CheckAndDisplayInputs(sender, e);
+            }
+        }
+        private void CheckAndDisplayInputs(object? sender, EventArgs e)
         {
             // Display an error message if the integer field and/ or the input string field is empty
             if (!string.IsNullOrEmpty(IntegerContainer.Text) && !string.IsNullOrEmpty(StringContainer.Text))
             {
+                // Else assign the values to the variables
                 InputString = StringContainer.Text;
-                ShiftingValue = Convert.ToInt32(IntegerContainer.Text);
+                if (int.TryParse(IntegerContainer.Text, out int shiftingValue))
+                {
+                    ShiftingValue = shiftingValue;
+                }
+                else
+                {
+                    IntegerErrorLabel.Text = "Please enter a valid integer";
+                    IsInputValid = false;
+                }
             }
             else
             {
@@ -166,17 +201,11 @@ namespace Decipher
                 }
                 if (string.IsNullOrEmpty(StringContainer.Text))
                 {
-                    ShiftingValue = 0;
+                    ShiftingValue = 99999;
                     IntegerErrorLabel.Text = "Please enter an integer";
                 }
                 IsInputValid = false;
             }
-
-            // Initialize the labels text
-            InputAsciiLabel.Text = "The ASCII values of the input string is: ";
-            OutputLabel.Text = "The output string is: ";
-            OutputAsciiLabel.Text = "The ASCII values of the output string is: ";
-            SortedStringLabel.Text = "The sorted input string is: ";
 
             // Call the checkString function
             StringProcessing.CheckInput(InputString, ShiftingValue);
@@ -208,18 +237,19 @@ namespace Decipher
             StringErrorLabel.Text = "";
             IntegerErrorLabel.Text = "";
             // Call the encode function and set the output label to the output string
-            OutputLabel.Text += StringProcessing.Print(InputString, ShiftingValue);
+            OutputTextBox.Text += "The ASCII value of the input code is: ";
             foreach (int i in StringProcessing.InputCode(InputString))
             {
-                InputAsciiLabel.Text += i.ToString() + " ";
+                OutputTextBox.Text += i.ToString() + " ";
             }
+            OutputTextBox.Text += "\r\n" + "The output code is: " + StringProcessing.Print(InputString, ShiftingValue);
+            OutputTextBox.Text += "\r\n" + "The ASCII value of the output code is: ";
             foreach (int i in StringProcessing.OutputCode(StringProcessing.Print(InputString, ShiftingValue)))
             {
-                OutputAsciiLabel.Text += i.ToString() + " ";
+                OutputTextBox.Text += i.ToString() + " ";
             }
-
             // Call the sortString function 
-            SortedStringLabel.Text += StringProcessing.Sort(InputString);
+            OutputTextBox.Text += "\r\n" + "The sorted string is: " + StringProcessing.Sort(InputString);
         }
     }
 }
