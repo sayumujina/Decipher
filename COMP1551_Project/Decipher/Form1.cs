@@ -4,16 +4,11 @@ using System;
 using System.Xml;
 namespace Decipher
 {
-    public partial class DecipherForm : Form
+    public partial class Enkrypto: Form
     {
-        public DecipherForm()
+        public Enkrypto()
         {
-            InitializeComponent();        
-        }
-
-        private void DecipherForm_KeyDown(object? sender, KeyEventArgs e)
-        {
-            throw new NotImplementedException();
+            InitializeComponent();
         }
 
         // Initialize variables 
@@ -56,6 +51,10 @@ namespace Decipher
                 }
                 else
                 {
+                    if (InputString == "")
+                    {
+                        StringErrorMessage = "Please enter a string.";
+                    }
                     if (InputString.Length > 40)
                     {
                         StringErrorMessage = "The input string must contain 40 characters or less.";
@@ -118,6 +117,7 @@ namespace Decipher
                 }
                 return ConvertedInputCode;
             }
+
             // Return an array containing the integer of each character of the output string
             public static int[] OutputCode(string OutputString)
             {
@@ -153,7 +153,7 @@ namespace Decipher
                 this.KeyDown += (sender, e) => IsEnterKeyDown(sender, e);
             }
             InputString = "";
-            ShiftingValue = 99999;           
+            ShiftingValue = 99999;
             SubmitLabel.Text = "";
             OutputTextBox.Text = "";
             StringErrorLabel.Text = "";
@@ -163,7 +163,7 @@ namespace Decipher
         private void SubmitButton_Click(object sender, EventArgs e)
         {
             OutputTextBox.Text = "";
-            CheckAndDisplayInputs(sender, e);
+            DisplayOutputs(sender, e);
         }
 
         private void IsEnterKeyDown(object sender, KeyEventArgs e)
@@ -171,39 +171,21 @@ namespace Decipher
             if (e.KeyCode == Keys.Enter)
             {
                 OutputTextBox.Text = "";
-                CheckAndDisplayInputs(sender, e);
+                DisplayOutputs(sender, e);
             }
         }
-        private void CheckAndDisplayInputs(object? sender, EventArgs e)
+        private void DisplayOutputs(object? sender, EventArgs e)
         {
-            // Display an error message if the integer field and/ or the input string field is empty
-            if (!string.IsNullOrEmpty(IntegerContainer.Text) && !string.IsNullOrEmpty(StringContainer.Text))
+            
+            // Assign the values to the variables
+            InputString = StringContainer.Text;
+            if (int.TryParse(IntegerContainer.Text, out int shiftingValue))
             {
-                // Else assign the values to the variables
-                InputString = StringContainer.Text;
-                if (int.TryParse(IntegerContainer.Text, out int shiftingValue))
-                {
-                    ShiftingValue = shiftingValue;
-                }
-                else
-                {
-                    IntegerErrorLabel.Text = "Please enter a valid integer";
-                    IsInputValid = false;
-                }
+                ShiftingValue = shiftingValue;
             }
             else
             {
-                if (string.IsNullOrEmpty(IntegerContainer.Text))
-                {
-                    InputString = ""; // Prevent null reference exception
-                    StringErrorLabel.Text = "Please enter a string";
-
-                }
-                if (string.IsNullOrEmpty(StringContainer.Text))
-                {
-                    ShiftingValue = 99999;
-                    IntegerErrorLabel.Text = "Please enter an integer";
-                }
+                IntegerErrorLabel.Text = "Please enter a valid integer. ";
                 IsInputValid = false;
             }
 
@@ -251,5 +233,6 @@ namespace Decipher
             // Call the sortString function 
             OutputTextBox.Text += "\r\n" + "The sorted string is: " + StringProcessing.Sort(InputString);
         }
+
     }
 }

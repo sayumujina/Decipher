@@ -1,6 +1,6 @@
 ﻿namespace Decipher
 {
-    partial class DecipherForm
+    partial class Enkrypto
     {
         /// <summary>
         ///  Required designer variable.
@@ -124,9 +124,9 @@
             label1.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             label1.Location = new Point(342, 9);
             label1.Name = "label1";
-            label1.Size = new Size(162, 46);
+            label1.Size = new Size(166, 46);
             label1.TabIndex = 12;
-            label1.Text = "Decipher";
+            label1.Text = "Enkrypto";
             // 
             // OutputTextBox
             // 
@@ -154,7 +154,7 @@
             Controls.Add(IntegerContainer);
             Controls.Add(StringContainer);
             Name = "DecipherForm";
-            Text = "DecipherForm";
+            Text = "Enkrypto";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
             ResumeLayout(false);

@@ -12,7 +12,7 @@ namespace Decipher
             // see https://aka.ms/applicationconfiguration.
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(true);
-            Application.Run(new DecipherForm());
+            Application.Run(new Enkrypto());
         }
     }
 }
